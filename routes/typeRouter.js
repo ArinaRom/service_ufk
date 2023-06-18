@@ -6,6 +6,9 @@ const authMiddleware = require('../middleware/authMiddleware')
 // POST /api/types - Создать новый тип обращения
 router.post('/', authMiddleware, typeController.createType);
 
+// PUT /api/types - Создать новый тип обращения
+router.put('/', authMiddleware, typeController.editType);
+
 // DELETE /api/types - Удалить тип обращения
 router.delete('/', authMiddleware, typeController.deleteType);
 

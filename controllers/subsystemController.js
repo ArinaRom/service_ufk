@@ -12,15 +12,13 @@ class SubsystemController {
 
     async createSubsystem(req, res) {
         try {
-            const { programId, name, description } = req.body;
-            // TODO создавать ключевые слова
+            const { programId, name, description, keywords } = req.body;
 
             const program = await Program.findByPk(programId);
-            console.log(program)
             if (!program) {
                 return res.status(500).json({ error: 'Программа не найдена' });
             }
-            const subsystem = await Subsystem.create({ name, description });
+            const subsystem = await Subsystem.create({ name, description, keywords });
             await subsystem.setProgram(program);
 
             res.status(200).json(subsystem);
@@ -31,15 +29,14 @@ class SubsystemController {
 
     async editSubsystem(req, res) {
         try {
-            const { id, name, description } = req.body;
+            const { id, name, description, keywords } = req.body;
             const subsystem = await Subsystem.findByPk(id);
 
             if (!subsystem) {
                 return res.status(500).json({ error: 'Подсистема не найдена' });
             }
 
-            // TODO создавать ключевые слова
-            const updatedSubsystem = await subsystem.update({ name, description });
+            const updatedSubsystem = await subsystem.update({ name, description, keywords });
 
             res.status(200).json(updatedSubsystem);
         } catch (error) {

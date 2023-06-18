@@ -1,0 +1,122 @@
+applications
+
+POST /api/applications - Создать новое заявление
+{
+  "description": string,
+  "organization": string,
+  "fullName": string,
+  "departureDepartment": string,
+  "programId": number,
+  "subsystemId": number,
+  "typeId": number
+}
+
+PUT /api/applications - Обновить заявление
+{
+  "id": number,
+  "description": string,
+  "organization": string,
+  "fullName": string,
+  "departureDepartment": string,
+  "programId": number,
+  "subsystemId": number,
+  "typeId": number
+}
+
+PUT /api/applications/status - Установить статус заявления
+{
+  "id": number,
+  "status": string
+}
+
+DELETE /api/applications - Удалить заявление
+{
+  "id": number
+}
+
+GET /api/applications - Получить все заявления
+
+
+___________________________________________________________________________________
+
+programs
+
+GET /api/programs - Получить все программы
+POST /api/programs - Создать новую программу
+{
+  "name": string
+}
+
+PUT /api/programs - Изменить программу
+{
+  "id": number,
+  "name": string
+}
+
+DELETE /api/programs - Удалить программу
+{
+  "id": number
+}
+
+
+___________________________________________________________________________________
+
+subsystems
+
+GET /api/subsystems - Получить все подсистемы
+POST /api/subsystems - Создать новую подсистему
+{
+  "programId": number,
+  "name": string,
+  "description": string
+}
+
+PUT /api/subsystems - Изменить подсистему
+{
+  "id": number,
+  "name": string,
+  "description": string
+}
+
+DELETE /api/subsystems - Удалить подсистему
+{
+  "id": number
+}
+
+
+
+___________________________________________________________________________________
+
+types
+
+POST /api/types - Создать новый тип обращения
+{
+  "name": "Название типа обращения",
+  "description": "Описание типа обращения"
+}
+
+DELETE /api/types - Удалить тип обращения
+{
+  "id": number
+}
+
+GET /api/types - Получить все типы обращений
+
+
+___________________________________________________________________________________
+
+user
+
+POST /api/user/registration - Зарегистрировать пользователя
+POST /api/user/login - Авторизоваться под новый пользователем
+GET /api/user/auth - Проверить авторизацию пользователя
+
+
+___________________________________________________________________________________
+
+ChatGpt
+
+POST /api/openai/generateJson - Создать JSON на оснве запроса
+{
+  "prompt": string
+}
