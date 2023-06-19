@@ -4,10 +4,12 @@ const { Type, Subsystem, Program } = require('../models/index');
 class OpenAiController {
 	constructor(){
 		this.api_key = process.env.CHAT_GPT_API_KEY
+		this.organization_key = process.env.CHAT_GPT_ORG_KEY
 		this.labels = ["ошибка"];
 
 		this.configuration = new Configuration({
 			apiKey: this.api_key,
+			organization: this.organization_key,
 		})
 
 		this.openai = new OpenAIApi(this.configuration);
