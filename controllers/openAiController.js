@@ -51,6 +51,10 @@ class OpenAiController {
     try {
       const { description } = req.body;
 
+			if (!description) {
+				res.status(500).json({ error: 'Не введено описание' });
+			}
+
 			const types = await Type.findAll({
 				attributes: ['id', 'name', 'keywords']
 			});
@@ -75,7 +79,7 @@ class OpenAiController {
 			const subsystemsRes = await this.openai.createCompletion({
         model: "text-davinci-003",
 				prompt: subsystemsPrompt,
-        max_tokens: 200,
+        max_tokens: 2400,
         temperature: 0,
 				top_p: 1.0,
 				frequency_penalty: 0.0,
